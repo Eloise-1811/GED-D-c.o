@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GED DÉCO - Officiel 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--gold:#d4af37;
+--navy:#002147;
+--white:#ffffff;
+--bg:#f8f9fa;
+--green:#27ae60;
+--black:#000000;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:white;
+color:black;
+overflow-x:hidden;
+}
+
+/* INTRO */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation:hideIntro 1s ease forwards;
+animation-delay:15s;
+}
+
+#intro img{
+width:220px;
+opacity:0;
+animation:fadeLogo 6s ease forwards;
+}
+
+#intro h1{
+margin-top:20px;
+font-size:2.5rem;
+color:var(--navy);
+opacity:0;
+animation:fadeText 5s ease forwards;
+animation-delay:3s;
+}
+
+@keyframes fadeLogo{
+0%{
+opacity:0;
+transform:scale(0.5);
+}
+100%{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@keyframes fadeText{
+0%{
+opacity:0;
+}
+100%{
+opacity:1;
+}
+}
+
+@keyframes hideIntro{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* NAVBAR */
+
+nav{
+background:var(--navy);
+padding:15px;
+display:flex;
+justify-content:center;
+gap:10px;
+position:sticky;
+top:0;
+z-index:1000;
+flex-wrap:wrap;
+}
+
+nav button{
+background:white;
+border:none;
+color:black;
+padding:10px 18px;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav button.active{
+background:var(--gold);
+color:black;
+}
+
+/* SECTIONS */
+
+.section{
+display:none;
+padding:50px 20px;
+max-width:1100px;
+margin:auto;
+text-align:center;
+animation:fadeIn 0.5s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+/* ACCUEIL */
+
+#accueil{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:white;
+}
+
+#accueil img{
+width:250px;
+margin-bottom:20px;
+}
+
+#accueil h1{
+font-size:4rem;
+color:black;
+}
+
+#accueil p{
+font-size:1.3rem;
+margin-top:10px;
+color:black;
+}
+
+/* FORMULES */
+
+.formula-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+padding:25px;
+border-radius:15px;
+text-align:left;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+color:black;
+}
+
+.card h3{
+margin-bottom:15px;
+font-size:1.5rem;
+}
+
+.card b{
+color:black;
+}
+
+.card1{
+background:#FFD700;
+}
+
+.card2{
+background:#87CEFA;
+}
+
+.card3{
+background:#FFB6C1;
+}
+
+.card4{
+background:#98FB98;
+}
+
+/* PRESTATAIRES */
+
+.presta-btns{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+
+.presta-btns button{
+background:var(--navy);
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+#galerie{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+#galerie img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* PAIEMENT */
+
+.pay-form{
+background:white;
+padding:30px;
+border-radius:15px;
+max-width:500px;
+margin:auto;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.btn-pay{
+width:100%;
+padding:15px;
+border:none;
+border-radius:5px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+#confirmation-container{
+display:none;
+margin-top:30px;
+padding:30px;
+background:white;
+border:2px dashed var(--gold);
+border-radius:15px;
+}
+
+/* SUIVI */
+
+.stepper{
+display:flex;
+justify-content:space-between;
+margin:30px auto;
+position:relative;
+max-width:400px;
+}
+
+.stepper::before{
+content:'';
+position:absolute;
+top:15px;
+left:0;
+width:100%;
+height:3px;
+background:#eee;
+z-index:1;
+}
+
+.step{
+width:35px;
+height:35px;
+background:#eee;
+border-radius:50%;
+z-index:2;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+font-weight:bold;
+}
+
+.step.active{
+background:var(--gold);
+color:white;
+}
+
+.step.done{
+background:var(--green);
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div id="intro">
+
+<img src="images/logo.png" alt="Logo GED Déco">
+
+<h1>GED DÉCO</h1>
+
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<button onclick="nav('accueil',this)" class="active">
+Accueil
+</button>
+
+<button onclick="nav('formules',this)">
+Formules
+</button>
+
+<button onclick="nav('presta',this)">
+Prestataires
+</button>
+
+<button onclick="nav('pay',this)">
+Paiement & Suivi
+</button>
+
+</nav>
+
+<!-- ACCUEIL -->
+
+<section id="accueil" class="section" style="display:flex;">
+
+<img src="images/logo.png" alt="Logo GED Déco">
+
+<h1>GED DÉCO</h1>
+
+<p>
+Sublimer vos instants précieux
+</p>
+
+</section>
+
+<!-- FORMULES -->
+
+<section id="formules" class="section">
+
+<h2>
+Nos Formules & Tarifs
+</h2>
+
+<div class="formula-grid">
+
+<div class="card card1">
+
+<h3>
+Essentielle (< 50 pers)
+</h3>
+
+Anniversaire / Baptême :
+<b>50 000 – 250 000 FCFA</b><br><br>
+
+Événement d'Entreprise :
+<b>250 000 – 300 000 FCFA</b><br><br>
+
+Mariage :
+<b>350 000 – 500 000 FCFA</b>
+
+</div>
+
+<div class="card card2">
+
+<h3>
+Confort (50 - 150 pers)
+</h3>
+
+Anniversaire / Baptême :
+<b>80 000 – 350 000 FCFA</b><br><br>
+
+Événement d'Entreprise :
+<b>300 000 – 500 000 FCFA</b><br><br>
+
+Mariage :
+<b>500 000 – 1 000 000 FCFA</b>
+
+</div>
+
+<div class="card card3">
+
+<h3>
+Prestige (>150 pers)
+</h3>
+
+Anniversaire / Baptême :
+<b>120 000 – 500 000 FCFA</b><br><br>
+
+Événement d'Entreprise :
+<b>500 000 – 700 000 FCFA</b><br><br>
+
+Mariage :
+<b>1 000 000 – 2 500 000 FCFA</b>
+
+</div>
+
+<div class="card card4">
+
+<h3>
+Pack Sur-Mesure
+</h3>
+
+À partir de
+<b>2 500 000 FCFA</b><br><br>
+
+<i>
+Une offre entièrement personnalisée selon vos besoins spécifiques.
+</i>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRESTATAIRES -->
+
+<section id="presta" class="section">
+
+<h2>
+Réalisations de nos Partenaires
+</h2>
+
+<div class="presta-btns">
+
+<button onclick="voirPresta('prest')">
+PREST’ÉVENTS
+</button>
+
+<button onclick="voirPresta('ds')">
+DS ÉVENTS
+</button>
+
+<button onclick="voirPresta('mych')">
+MYCH
+</button>
+
+<button onclick="voirPresta('klas')">
+KLAS’EVENTS
+</button>
+
+</div>
+
+<div id="galerie"></div>
+
+</section>
+
+<!-- PAIEMENT -->
+
+<section id="pay" class="section">
+
+<div class="pay-form" id="f-pay">
+
+<h2>
+Réservation & Paiement
+</h2>
+
+<input type="text" id="ev-nom" placeholder="Nom de l'événement">
+
+<select id="ev-pack">
+
+<option>
+Essentielle
+</option>
+
+<option>
+Confort
+</option>
+
+<option>
+Prestige
+</option>
+
+<option>
+Sur-Mesure
+</option>
+
+</select>
+
+<input type="number" id="ev-prix" placeholder="Montant convenu (FCFA)">
+
+<button class="btn-pay" style="background:#1b91ff" onclick="valider('Wave')">
+Wave
+</button>
+
+<button class="btn-pay" style="background:#ff7900" onclick="valider('Orange Money')">
+Orange Money
+</button>
+
+<button class="btn-pay" style="background:#333" onclick="valider('Carte Bancaire')">
+Carte Bancaire
+</button>
+
+</div>
+
+<div id="confirmation-container">
+
+<h2 style="color:green">
+✓ PAIEMENT RÉUSSI
+</h2>
+
+<div id="reçu-texte"></div>
+
+<hr><br>
+
+<h3>
+SUIVI EN TEMPS RÉEL
+</h3>
+
+<p>
+Code :
+<b id="track-code"></b>
+</p>
+
+<div class="stepper">
+
+<div class="step done">1</div>
+
+<div class="step active">2</div>
+
+<div class="step">3</div>
+
+<div class="step">4</div>
+
+</div>
+
+<p style="font-weight:bold;color:var(--gold)">
+Statut : En cours de préparation ✨
+</p>
+
+<button onclick="window.print()">
+Imprimer le reçu
+</button>
+
+</div>
+
+</section>
+
+<script>
+
+/* NAVIGATION */
+
+function nav(id,btn){
+
+document.querySelectorAll('.section')
+.forEach(s => s.style.display='none');
+
+document.querySelectorAll('nav button')
+.forEach(b => b.classList.remove('active'));
+
+document.getElementById(id).style.display =
+(id==='accueil' ? 'flex' : 'block');
+
+btn.classList.add('active');
+
+}
+
+/* GALERIE */
+
+function voirPresta(nom){
+
+const gal = document.getElementById('galerie');
+
+gal.innerHTML = '';
+
+let images = [];
+
+if(nom === 'prest'){
+
+images = [
+'images/prestevents1.jpg',
+'images/prestevents2.jpg',
+'images/prestevents3.jpg'
+];
+
+}
+
+if(nom === 'ds'){
+
+images = [
+'images/dsevents1.jpg',
+'images/dsevents2.jpg',
+'images/dsevents3.jpg'
+];
+
+}
+
+if(nom === 'mych'){
+
+images = [
+'images/mych1.jpg',
+'images/mych2.jpg',
+'images/mych3.jpg'
+];
+
+}
+
+if(nom === 'klas'){
+
+images = [
+'images/Klas1.jpg',
+'images/klas2.jpg',
+'images/klas3.jpg'
+];
+
+}
+
+images.forEach(src => {
+
+const img = document.createElement('img');
+
+img.src = src;
+
+img.alt = "Image prestataire";
+
+gal.appendChild(img);
+
+});
+
+}
+
+/* PAIEMENT */
+
+function valider(methode){
+
+const nom = document.getElementById('ev-nom').value;
+
+const prix = document.getElementById('ev-prix').value;
+
+if(!nom || !prix){
+
+alert("Veuillez remplir les informations.");
+
+return;
+
+}
+
+document.getElementById('f-pay').style.display='none';
+
+document.getElementById('confirmation-container').style.display='block';
+
+document.getElementById('reçu-texte').innerHTML =
+
+'<b>Événement :</b> ' + nom +
+'<br><b>Montant :</b> ' + prix + ' FCFA' +
+'<br><b>Mode :</b> ' + methode;
+
+document.getElementById('track-code').innerText =
+'GED-' + Math.floor(Math.random()*9000);
+
+}
+
+</script>
+
+</body>
+</html>
